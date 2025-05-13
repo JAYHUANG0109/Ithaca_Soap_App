@@ -1,0 +1,101 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
+{
+	"name": "Vite + Vue.js",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+		"ghcr.io/devcontainers-contrib/features/pnpm:2": { }
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [ 5173 ],
+	"portsAttributes": {
+		"5173": {
+			"label": "app",
+			"onAutoForward": "openBrowser"
+		}
+	},
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"waitFor": "onCreateCommand",
+	"updateContentCommand": "pnpm install",
+	"postStartCommand": "git config --global pull.rebase false",
+
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			"settings": {
+				"[css]": {
+					"editor.defaultFormatter": "vscode.css-language-features"
+				},
+				"[html]": {
+					"editor.defaultFormatter": "vscode.html-language-features"
+				},
+				"[javascript]": {
+					"editor.defaultFormatter": "vscode.typescript-language-features"
+				},
+				"[vue]": {
+					"editor.defaultFormatter": "Vue.volar"
+				},
+				"breadcrumbs.enabled": true,
+				"debug.console.collapseIdenticalLines": false,
+				"debug.console.wordWrap": true,
+				"editor.formatOnSave": true,
+				"editor.minimap.maxColumn": 80,
+				"editor.minimap.showSlider": "always",
+				"editor.stickyScroll.enabled": true,
+				"editor.wordWrap": "on",
+				"explorer.compactFolders": false,
+				"explorer.fileNesting.enabled": true,
+				"explorer.fileNesting.patterns": {
+					"package.json": "package-lock.json, pnpm*, .yarnrc*, yarn*, .eslint*, eslint*, .prettier*, prettier*, .editorconfig",
+					"tsconfig.json": "tsconfig.*.json, env.d.ts",
+					"vite.config.*": "jsconfig*, vitest.config.*, cypress.config.*, playwright.config.*"
+				},
+				"files.insertFinalNewline": true,
+				"files.trimFinalNewlines": true,
+				"files.trimTrailingWhitespace": true,
+				"git.autofetch": true,
+				"html.autoClosingTags": false,
+				"html.format.wrapLineLength": 0,
+				"json.format.keepLines": true,
+				"markdownlint.config": {
+					"MD012": false,
+					"MD013": false,
+					"MD022": false,
+					"MD025": false,
+					"MD033": false,
+					"MD036": false,
+					"MD037": false,
+					"MD040": false
+				},
+				"npm.enableRunFromFolder": true,
+				"workbench.editor.highlightModifiedTabs": true,
+				"workbench.editor.wrapTabs": true,
+				"workbench.editorAssociations": {
+					"*.svg": "svgPreview.previewEditor"
+				},
+				"workbench.tree.indent": 18
+			},
+			"extensions": [
+				"vue.volar",
+				"yzhang.markdown-all-in-one",
+				"bierner.markdown-checkbox",
+				"davidanson.vscode-markdownlint",
+				"jgclark.vscode-todo-highlight",
+				"analytic-signal.preview-pdf",
+				"mushan.vscode-paste-image",
+				"kisstkondoros.vscode-gutter-preview",
+				"sndst00m.vscode-native-svg-preview",
+				"GitHub.copilot"
+			]
+		}
+	}
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
